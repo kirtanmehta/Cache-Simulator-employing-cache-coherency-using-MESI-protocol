@@ -1,0 +1,48 @@
+Readme
+
+This project includes one main systemverilog file "cache.sv". The test tracefiles, parameters and Simulation modes are passed into the make file
+
+
+#######################################################################################################################################################################################
+
+Make file includes 4 labels
+
+            work_dir: to create work library and map it.
+
+            build: To compile the sv file 
+            
+            run: To simulate the sv file.
+
+            aLL: To run all the above three labels.
+
+
+The Make file takes three modes for compilation of design.
+
+            mode0: To just display the final hits and misses and Ratio of cache.
+            mode1: To To print the Messeages of read and write along with mode0.
+            mode2: Debugging mode. To display the the output at every function. Used for debugging and Understanding the working of code in proper way
+
+
+
+
+How to RUN the makefile
+
+    ---> Go the directory where design is present.
+    ---> make <label_name> MODE:<mode_name> FILE:<tracefile_name>
+
+
+######################################################################################################################################################################################
+
+
+
+Compilation and Simulation Commands in makefile
+        vlog +define+mode0 <file_name>
+       	vsim -c -novopt -G Tracefile="$(FILE)" -do "run -all" cache
+
+           -c : command line interface
+           -novopt: no optimization of code
+           -G to change the paramter. Used for changing the Trace File.
+           -do Run the command after simulation. run -all is used for running the code until it sees $finish.
+
+
+#############################################################################################################################################################################################
